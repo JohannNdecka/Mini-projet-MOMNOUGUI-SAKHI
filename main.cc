@@ -6,25 +6,26 @@
 
 int main (int argc, char *argv[])
 {
-Gtk::Main kit(argc, argv);
-Fenetre fenetre;
-/*
-Fenetre_Choix fenetre2;
-Fenetre_Choix fenetre3("Elections Trump ;) - Menu joueur", "Johann");
-Fenetre_Choix fenetre4("Elections Trump ;) - Menu joueur", "Johann", "win_loss.gif");
-Fenetre_Reponse fenetre5("Elections Trump ;) - Résultats", "Bravo ! ! ! \nVous avez gagné", "victory_bush.gif", "Rejouer", "Quitter");
-Fenetre_Entry fenetre6;
-Fenetre_Debat fenetre7;
-//Shows the window and returns when it is closed.
-*/
-Gtk::Main::run(fenetre);
-/*
-Gtk::Main::run(fenetre2);
-Gtk::Main::run(fenetre3);
-Gtk::Main::run(fenetre4);
-Gtk::Main::run(fenetre5);
-Gtk::Main::run(fenetre6);
-Gtk::Main::run(fenetre7);
-*/
-return 0;
+	Gtk::Main kit(argc, argv);
+	srand(time(NULL));
+	Fenetre fenetre;
+	/*
+	Fenetre_Choix fenetre2;
+	Fenetre_Choix fenetre3("Elections Trump ;) - Menu joueur", "Johann");
+	Fenetre_Choix fenetre4("Elections Trump ;) - Menu joueur", "Johann", "win_loss.gif");
+	Fenetre_Reponse fenetre5("Elections Trump ;) - Résultats", "Bravo ! ! ! \nVous avez gagné", "victory_bush.gif", "Rejouer", "Quitter");
+	Fenetre_Entry fenetre6;
+	Fenetre_Debat fenetre7;
+	//Shows the window and returns when it is closed.
+	*/
+	Gtk::Main::run(fenetre);
+	/*
+	Gtk::Main::run(fenetre2);
+	Gtk::Main::run(fenetre3);
+	Gtk::Main::run(fenetre4);
+	Gtk::Main::run(fenetre5);
+	Gtk::Main::run(fenetre6);
+	Gtk::Main::run(fenetre7);
+	*/
+	return 0;
 }

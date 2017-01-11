@@ -4,6 +4,15 @@
 #include <gtkmm/label.h>
 #include <gtkmm/main.h>
 #include <gtkmm/messagedialog.h>
+#include "Personnage.hh"
+#include "Electeur_non_politique.hh"
+#include "Politique.hh"
+#include "Evenement.hh"
+#include "Election.hh"
+#include "Meeting.hh"
+#include "Debat.hh"
+#include "Scenario.hh"
+#include "utility.hh"
 
 class Basic_Window : public Gtk::Window
 {
