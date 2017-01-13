@@ -15,6 +15,11 @@ Debat::Debat(std::vector<Personnage> objet)
 		int  _D = rand_a_b(0,100);
 		int  _C = rand_a_b(0,100);
 		int maxi;
+		tableau[0] = _EG;
+		tableau[1] = _G;
+		tableau[2] = _C;
+		tableau[3] = _D;
+		tableau[4] = _ED;
           //C'est ici qu'il faudra mettre la fenetre pour le debat
         
 		maxi = max(_ED,_EG);
@@ -27,16 +32,31 @@ Debat::Debat(std::vector<Personnage> objet)
 		cout<<_D<<endl;
 		cout<<_C<<endl;
 		
-		if (maxi == _ED)
-		augmenter(objet,ED);
+		if (maxi == _ED) 
+		{
+			augmenter(objet,ED);
+			gain = ED;
+		}
 		else if(maxi == _EG )
-		augmenter(objet,EG);
+		{
+			augmenter(objet,EG);
+			gain = ED;
+		}
 		else if(maxi == _G)
-		augmenter(objet,G);
+		{
+			augmenter(objet,G);
+			gain = ED;
+		}
 		else if(maxi == _D)
-		augmenter(objet,D);
+		{
+			augmenter(objet,D);
+			gain = ED;
+		}
 		else
-		augmenter(objet,C);
+		{
+			augmenter(objet,C);
+			gain = ED;
+		}
  	}
 
 

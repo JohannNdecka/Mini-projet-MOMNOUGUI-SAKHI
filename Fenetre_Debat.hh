@@ -11,7 +11,7 @@
 class Fenetre_Debat : public Basic_Window
 {
 	public:
-		Fenetre_Debat();
+		Fenetre_Debat(int* resultats_deb, Parti win, Glib::ustring winner);
 		virtual ~Fenetre_Debat();
 	protected:
 		//Signal handlers:
@@ -36,4 +36,5 @@ class Fenetre_Debat : public Basic_Window
 	Gtk::HButtonBox m_ButtonBox;
 	Gtk::Button m_Button_Quit;
 	Gtk::Button button_rules;
+	Gtk::Label gagnant;
 };

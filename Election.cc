@@ -9,7 +9,7 @@ using namespace std;
 
 
 /*		Contructeurs		*/
-Election::Election(std::vector<Personnage> objet)
+Election::Election(std::vector<Personnage>& objet)
 {
         for(int i(0);i<Personnage::nbPerso ;i++)
 		{

@@ -10,12 +10,12 @@ class Debat:public Evenement{
 		
 		/*		Attributs	*/
 		protected: 
-			
-		  
+			  
 
                 /*		Methodes	*/
 		public:
-			
+			Parti gain;
+			int tableau[5];		
 			std:: string method() const ;		
 			Debat(std::vector<Personnage> objet);
 			int max(int nb1,int nb2);

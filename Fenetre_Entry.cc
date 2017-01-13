@@ -24,6 +24,7 @@ Fenetre_Entry::~Fenetre_Entry()
 void Fenetre_Entry::entrer_nom()
 {
 	this->hide();
-	Fenetre_Choix choix_candidat("Elections Trump ;) - Menu joueur", zone.get_text());
+	nom = zone.get_text();
+	Fenetre_Choix choix_candidat("Elections Trump ;) - Menu joueur", nom);
 	Gtk::Main::run(choix_candidat);
 }

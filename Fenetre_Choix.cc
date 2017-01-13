@@ -2,7 +2,7 @@
 
 Fenetre_Choix::Fenetre_Choix():
 choix("Choisissez votre candidat"), eg_img("extreme_gauche.jpeg"), g_img("gauche.jpeg"), c_img("centre.jpeg"), d_img("droite.jpeg"), ed_img("extreme_droite.jpeg"),
-eg_button("Valider"), g_button("Valider"), c_button("Valider"), d_button("Valider"), ed_button("Valider"),  
+eg_button("Valider (EG)"), g_button("Valider (G)"), c_button("Valider (C)"), d_button("Valider (D)"), ed_button("Valider (ED)"),  
 pBox(false, 10), eg_Box(false, 10), g_Box(false, 10), c_Box(false, 10), d_Box(false, 10), ed_Box(false, 10), box1(false, 10), box2(false, 10), gif("win_loss.gif")
 {
 	set_title("Elections Trump ;) - Choix du candidat");
@@ -85,68 +85,105 @@ Fenetre_Choix::~Fenetre_Choix()
 void Fenetre_Choix::menu_meeting()
 {
 	this->hide();
-	Glib::ustring mess = "\nVous avez pu convaincre \n?n personnes";
+	int nombre = scenario.faire_un_meeting();
+	Glib::ustring mess = "\nVous avez pu convaincre \n" + std::to_string(nombre) + " personne(s)";
 	Fenetre_Reponse meeting("Elections Trump ;) - Menu Meeting", mess, "debat.gif", "Continuer", "Règles");
 	Gtk::Main::run(meeting);
 }
+/*
+Glib::ustring nom_parti(Parti val)
+{
+	Glib::ustring nom;
+		if(val==ED)
+			nom = "ED";
+		if(val==D)
+			nom = "D";
+		if(val==C)
+			nom = "C";
+		if(val==G)
+			nom = "G";
+		if(val==EG)
+			nom = "EG";
+	return nom;
+}
+*/
 
 void Fenetre_Choix::menu_debat()
 {
 	this->hide();
-	Fenetre_Debat debat;
+	int resultats_debats[5];
+	Parti deb = scenario.faire_un_debat(resultats_debats);
+	//Glib::ustring t = this->nom_parti(deb);
+	Glib::ustring winner = "Le gagnant du débat est le représentant du parti ";//+t;
+	Fenetre_Debat debat(resultats_debats, deb, winner);
 	Gtk::Main::run(debat);
 }
 
 void Fenetre_Choix::start_elections()
 {
 		this->hide();
-		Fenetre_Choix elections("Elections Trump ;) - Elections", "Johann", "win_loss.gif");
+		Fenetre_Choix elections("Elections Trump ;) - Elections", nom, "obama.gif");
 		Gtk::Main::run(elections);
 }
 
 void Fenetre_Choix::affichage_resultats()
 {
 	this->hide();
-	Fenetre_Reponse resultats("Elections Trump ;) - Résultats", "Bravo ! ! ! \nVous avez gagné", "victory_bush.gif", "Rejouer", "Quitter");
-	Gtk::Main::run(resultats);
+	scenario.faire_une_election();
+	Glib::ustring txt;
+	if(scenario.joueur == scenario.gagnant)
+	{
+		txt = "Bravo ! ! ! " + nom + "\nVous avez gagné";	
+		Fenetre_Reponse resultats("Elections Trump ;) - Résultats", txt, "victory_bush.gif", "Rejouer", "Quitter");
+		Gtk::Main::run(resultats);
+	}
+	else
+	{
+		txt = "Désolé " + nom + " ! ! ! \nVous avez perdu! \nLe gagnant est le représentant du parti ";
+		Fenetre_Reponse resultats("Elections Trump ;) - Résultats", txt, "win_loss.gif", "Rejouer", "Quitter");
+		Gtk::Main::run(resultats);
+	}
+	
 }
 
 void Fenetre_Choix::choix_eg()
 {
-		this->hide();
-		Fenetre_Entry entry;
-		Gtk::Main::run(entry);
+	Scenario scenario(EG);
+	this->hide();
+	Fenetre_Entry entry;
+	Gtk::Main::run(entry);
 }
 
 void Fenetre_Choix::choix_g()
 {
-		this->hide();
-		Fenetre_Entry entry;
-		Gtk::Main::run(entry);
+	Scenario scenario(G);
+	this->hide();
+	Fenetre_Entry entry;
+	Gtk::Main::run(entry);
 }
 
 void Fenetre_Choix::choix_c()
 {
-		this->hide();
-		Fenetre_Entry entry;
-		Gtk::Main::run(entry);
+	Scenario scenario(C);
+	this->hide();
+	Fenetre_Entry entry;
+	Gtk::Main::run(entry);
 }
 
 void Fenetre_Choix::choix_d()
 {
-		this->hide();
-		Fenetre_Entry entry;
-		Gtk::Main::run(entry);
+	Scenario scenario(D);
+	this->hide();
+	Fenetre_Entry entry;
+	Gtk::Main::run(entry);
 }
 
 void Fenetre_Choix::choix_ed()
 {
-		this->hide();
-		Fenetre_Entry entry;
-		Gtk::Main::run(entry);
+	Scenario scenario(ED);
+	this->hide();
+	Fenetre_Entry entry;
+	Gtk::Main::run(entry);
 }
-
-
-
 
 

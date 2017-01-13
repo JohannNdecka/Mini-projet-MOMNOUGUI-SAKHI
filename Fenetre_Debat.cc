@@ -1,8 +1,8 @@
 #include "Fenetre_Debat.hh"
 #include "Fenetre_Choix.hh"
 
-Fenetre_Debat::Fenetre_Debat():
-m_Button_Quit("Retour"), button_rules("Règles")
+Fenetre_Debat::Fenetre_Debat(int* resultats_deb, Parti win, Glib::ustring winner):
+m_Button_Quit("Retour"), button_rules("Règles"), gagnant(winner)
 {
 	set_title("Elections Trump ;) - Menu Débat");
 	set_border_width(5);
@@ -13,6 +13,7 @@ m_Button_Quit("Retour"), button_rules("Règles")
 	//Only show the scrollbars when they are necessary:
 	m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
 	m_VBox.pack_start(m_ScrolledWindow);
+	m_VBox.pack_start(gagnant);
 	m_VBox.pack_start(m_ButtonBox, Gtk::PACK_SHRINK);
 	m_ButtonBox.pack_start(m_Button_Quit, Gtk::PACK_SHRINK);
 	m_ButtonBox.pack_start(button_rules, Gtk::PACK_SHRINK);
@@ -27,23 +28,33 @@ m_Button_Quit("Retour"), button_rules("Règles")
 	Gtk::TreeModel::Row row = *(m_refTreeModel->append());
 	row[m_Columns.m_col_parti] = "EG";
 	row[m_Columns.m_col_name] = "CPU";
-	row[m_Columns.m_col_percentage] = 15;
+	if(win == EG)
+		row[m_Columns.m_col_name] = nom;
+	row[m_Columns.m_col_percentage] = 10*resultats_deb[0];
 	row = *(m_refTreeModel->append());
 	row[m_Columns.m_col_parti] = "G";
 	row[m_Columns.m_col_name] = "CPU";
-	row[m_Columns.m_col_percentage] = 40;
+	if(win == G)
+		row[m_Columns.m_col_name] = nom;
+	row[m_Columns.m_col_percentage] = 10*resultats_deb[1];
 	row = *(m_refTreeModel->append());
 	row[m_Columns.m_col_parti] = "C";
 	row[m_Columns.m_col_name] = "CPU";
-	row[m_Columns.m_col_percentage] = 70;
+	if(win == C)
+		row[m_Columns.m_col_name] = nom;
+	row[m_Columns.m_col_percentage] = resultats_deb[2];
 	row = *(m_refTreeModel->append());
 	row[m_Columns.m_col_parti] = "D";
 	row[m_Columns.m_col_name] = "CPU";
-	row[m_Columns.m_col_percentage] = 50;
+	if(win == D)
+		row[m_Columns.m_col_name] = nom;
+	row[m_Columns.m_col_percentage] = resultats_deb[3];
 	row = *(m_refTreeModel->append());
 	row[m_Columns.m_col_parti] = "ED";
 	row[m_Columns.m_col_name] = "CPU";
-	row[m_Columns.m_col_percentage] = 80;
+	if(win == ED)
+		row[m_Columns.m_col_name] = nom;
+	row[m_Columns.m_col_percentage] = resultats_deb[4];
 	//Add the TreeView’s view columns:
 	//This number will be shown with the default numeric formatting.
 	m_TreeView.append_column("Parti", m_Columns.m_col_parti);
@@ -77,6 +88,7 @@ m_Button_Quit("Retour"), button_rules("Règles")
 Fenetre_Debat::~Fenetre_Debat()
 {
 }
+
 
 void Fenetre_Debat::on_button_quit()
 {

@@ -18,5 +18,6 @@ class Meeting:public Evenement{
 			std:: string method() const ;		
 			Meeting(std::vector<Personnage> objet,Politique objet2);
 			~Meeting();
+			int popularite;
 			
 };

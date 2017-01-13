@@ -15,7 +15,7 @@ class Election:public Evenement{
 
                 /*		Methodes	*/
 		public:
-			Election(std::vector<Personnage> objet);
+			Election(std::vector<Personnage>& objet);
 			std:: string method() const ;
 			~Election();
 			

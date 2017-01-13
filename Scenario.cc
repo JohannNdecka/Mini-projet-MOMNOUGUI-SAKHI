@@ -1,28 +1,29 @@
 #include <iostream>
 #include "Scenario.hh"
 
-Scenario::Scenario()
+Scenario::Scenario(Parti choix_parti)
 	{
 	
      		Parti deuxieme_parti,troisieme_parti,quatrieme_parti,cinquieme_parti;
 	    	
-	    	joueur = choisir();
+	    	joueur = choix_parti;
 	  
        		deuxieme_parti = deuxiemeparti(joueur);
 		troisieme_parti = troisiemeparti(joueur);
 		quatrieme_parti = quatriemeparti(joueur);
 		cinquieme_parti = cinquiemeparti(joueur);
+		/*
 		cout<<"deuxieme parti"<<endl;
 		cout<< deuxieme_parti << endl;
 		cout<<"troisieme parti"<<endl;
 		cout<< troisieme_parti << endl;
-
+		*/
 		
-	        Politique Kevin(joueur);
+	    Politique Kevin(joueur);
    
 		Politique Aminata(deuxieme_parti);
-                cout<<"deuxieme parti"<<endl;
-		cout<< Aminata.getval()<<endl;
+        //        cout<<"deuxieme parti"<<endl;
+		//cout<< Aminata.getval()<<endl;
 		//cout<<"deuxieme parti"<<endl;
 		//cout<< .getval()<<endl;
 		Politique Olivier(troisieme_parti);
@@ -38,9 +39,9 @@ Scenario::Scenario()
 		tableau.push_back(Cedric);
 		for(int i(0);i < Personnage::nbPerso ;i++)
 		 {
-                        Electeur_non_politique Melaine;
-                        cout<<"ici"<<endl;
-		        cout<<Melaine.getval()<<endl; 
+            Electeur_non_politique Melaine;
+			//cout<<"ici"<<endl;
+		    //cout<<Melaine.getval()<<endl; 
 			tableau.push_back(Melaine);
 		}
 
@@ -52,12 +53,13 @@ Scenario::Scenario()
                 
 
 		//tableau = new Electeur_non_politique[Personnage::nbPerso- 5];
-
+		/*
 		for(int i(0);i < Personnage::nbPerso ;i++)
 		 {
 		        cout<<i<<endl;
 			cout<<tableau[i].getval()<<endl;
 		}
+		*/
 
 		partis[ED]=0;
 		partis[EG]=0;
@@ -69,7 +71,7 @@ Scenario::Scenario()
 
 
 
-
+/*
 Parti Scenario::choisir()
 	{
 		
@@ -102,13 +104,8 @@ Parti Scenario::choisir()
 				
 			else 
 			return C;
-
-			
-		
-		
-			
-
-	}
+}
+*/
 
 
 
@@ -234,10 +231,7 @@ Parti Scenario::cinquiemeparti(Parti _val)
 		      if ( _val == ED)
 					
 				    return C;
-				   
-			
-			
-                        else if ( _val == EG )
+              else if ( _val == EG )
 
 				    return C; 
 				  
@@ -258,29 +252,24 @@ Parti Scenario::cinquiemeparti(Parti _val)
 			
 			
 		        else 		
-				
 				   return ED;
-
-
-
-
 	}
 
 
 
-void Scenario::faire_un_meeting()
+int Scenario::faire_un_meeting()
 	{
 		Meeting meeting(tableau,joueur);
-
-
+		return meeting.popularite;
 	}
 
 
-void Scenario::faire_un_debat()
+Parti Scenario::faire_un_debat(int* voix)
 	{
 		Debat debat(tableau);
-
-
+		for(int l=0;l<5;l++)
+			voix[l] = debat.tableau[l];
+		return debat.gain;
 	}
 
 void Scenario::faire_une_election()
@@ -346,25 +335,37 @@ void Scenario::faire_une_election()
 		                maxi = max(maxi,partis[ED]);
 		
 		if (maxi == partis[ED] )
+		{
 		      cout<<"extreme-droite a gagné"<<endl;
+		      gagnant = ED;
+		}
 		else if(maxi == partis[EG] )
+		{
 		       cout<<"extreme-gauche a gagné"<<endl;
+		       gagnant = EG;
+		}
 		else if(maxi == partis[D])
+		{
 		       cout<<"droite a gagné"<<endl;
+		       gagnant = D;
+		}
 		else if(maxi == partis[G])
+		{
 		       cout<<"gauche a gagné"<<endl;
+		       gagnant = G;
+		}
 		else
+		{
 		     cout<<"centre  a gagné"<<endl;
+		     gagnant = C;
+		}
 
-                
-
-
-			
-      
-		
-		
-
-
+        partis[ED]=0;
+		partis[EG]=0;
+		partis[D]=0;
+		partis[G]=0;
+		partis[C]=0;
+        
 	}
 
 

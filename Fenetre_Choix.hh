@@ -14,6 +14,7 @@ class Fenetre_Choix : public Basic_Window
 		Fenetre_Choix(Glib::ustring titre, Glib::ustring nom);
 		Fenetre_Choix(Glib::ustring titre, Glib::ustring nom, Glib::ustring fichier);
 		~Fenetre_Choix();
+		//Glib::ustring nom_parti(Parti val);
 	protected:
 		//Signal handlers
 		virtual void menu_meeting();

@@ -13,6 +13,7 @@ Meeting::Meeting(std::vector<Personnage> objet,Politique objet2)
         int  compteur = 0;
 	
 	int  limite = rand_a_b(0, 10);
+	popularite = limite;
         cout<<limite<<" electeurs en plus sont susceptibles de voter pour vous!!"<<endl;
 	for(int i(5);i<Personnage::nbPerso;i++)
 		{

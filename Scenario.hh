@@ -16,27 +16,22 @@ using namespace std;
 class Scenario{
 public :
 	
-		Scenario();
-		void faire_un_meeting();
-		void faire_un_debat();
+		Scenario(Parti choix_parti);
+		
+		int faire_un_meeting();
+		Parti faire_un_debat(int* voix);
 		void faire_une_election();
 		Parti deuxiemeparti(Parti _val);
 		Parti troisiemeparti(Parti _val);
 		Parti quatriemeparti(Parti _val);
 		Parti cinquiemeparti(Parti _val);
-		Parti choisir();
-	
-		
-		
-                
-	       
-	
-	
+		//Parti choisir();	
+		Parti joueur;
+		Parti gagnant;
 
 private :   
 		      	
 		      std::vector<Personnage> tableau ;
-		      Parti joueur;
                       //Personnage* tableau ;
 		      std::map<Parti,int> partis;
 		      

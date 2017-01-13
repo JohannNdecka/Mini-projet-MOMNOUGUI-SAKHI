@@ -13,13 +13,17 @@
 #include "Debat.hh"
 #include "Scenario.hh"
 #include "utility.hh"
+#include "Scenario.hh"
 
+//Toutes les classes fenêtres héritent de Gtkmm
 class Basic_Window : public Gtk::Window
 {
 	public:
 		Basic_Window();
 		virtual ~Basic_Window();
 		Glib::ustring nom;
+		Scenario scenario;
+		
 	protected:
 		//Signal handlers:
 		virtual bool close_button_clicked(GdkEventAny* event);
