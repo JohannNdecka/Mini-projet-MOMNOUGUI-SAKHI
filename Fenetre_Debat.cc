@@ -21,6 +21,8 @@ m_Button_Quit("Retour"), button_rules("Règles"), gagnant(winner)
 	m_ButtonBox.set_layout(Gtk::BUTTONBOX_END);
 	m_Button_Quit.signal_clicked().connect( sigc::mem_fun(*this,
 	&Fenetre_Debat::on_button_quit) );
+	button_rules.signal_clicked().connect( sigc::mem_fun(*this,
+	&Fenetre_Debat::affich_regles) );
 	//Create the Tree model:
 	m_refTreeModel = Gtk::ListStore::create(m_Columns);
 	m_TreeView.set_model(m_refTreeModel);
