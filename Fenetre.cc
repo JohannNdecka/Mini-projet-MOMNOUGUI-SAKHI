@@ -41,9 +41,9 @@ void Fenetre::message_depart()
 
 void Fenetre::message_regles()
 {
-	Gtk::MessageDialog dialogue(*this, "<big>C'est parti ! !  !</big>", true);
-	dialogue.set_title("Information");
-	dialogue.set_secondary_text("Début du jeu", true);
+	Gtk::MessageDialog dialogue(*this, "<big>Elections Trump ;)</big>", true);
+	dialogue.set_title("Règles du jeu");
+	dialogue.set_secondary_text("Dans ce jeu, vous incarnez le représentant d'un parti politique.\nLe but du jeu est de gagner les élections présidentielles avec ce parti.\n\tPour cela, vous pouvez organiser des meetings ou des débats afin d'obtenir plus de voix.\n A vous de jouer ;)", true);
 	dialogue.run();
 }
 

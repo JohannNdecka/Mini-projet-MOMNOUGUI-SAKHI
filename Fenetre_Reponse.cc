@@ -40,7 +40,7 @@ void Fenetre_Reponse::meeting_rules()
 {
 	Gtk::MessageDialog dialogue(*this, "<big>Voici les règles ! !  !</big>", true);
 	dialogue.set_title("Règles du meeting");
-	dialogue.set_secondary_text("lors d'un meeting, un canidat peut réussir à convaincre\n entre 0 et 10 personnes selon sa prestation", true);
+	dialogue.set_secondary_text("lors d'un meeting, un candidat peut réussir à convaincre\n entre 0 et 10 personnes selon sa prestation", true);
 	dialogue.run();
 }
 

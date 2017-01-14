@@ -25,7 +25,6 @@ public :
 		Parti troisiemeparti(Parti _val);
 		Parti quatriemeparti(Parti _val);
 		Parti cinquiemeparti(Parti _val);
-		//Parti choisir();	
 		Parti joueur;
 		Parti gagnant;
 

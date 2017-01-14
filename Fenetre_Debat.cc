@@ -101,7 +101,7 @@ void Fenetre_Debat::affich_regles()
 {
 	Gtk::MessageDialog dialogue(*this, "<big>Voici les règles ! !  !</big>", true);
 	dialogue.set_title("Règles du meeting");
-	dialogue.set_secondary_text("Lors d'un débat, un canidat peut réussir à convaincre\n entre 0 et 10 personnes selon sa prestation", true);
+	dialogue.set_secondary_text("Lors d'un débat, un candidat peut réussir à convaincre 50 personnes\n Il doit obtenir le plus grand pourcentage parmi ses concurrents", true);
 	dialogue.run();
 }
 
